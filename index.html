@@ -1,0 +1,1187 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Hi I Am JARVIS" />
+    <title>JARVIS</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,400;0,600;0,700;1,100;1,400;1,500&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: white;
+  position: fixed;
+  font-family: "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+body {
+  background-color: black;
+}
+#about-jarvis-link {
+  left:150px;
+  top:100px;
+  font-size: 20px; 
+  font-family: Arial, sans-serif; 
+  color:red;
+  text-decoration: underline; 
+}
+button {
+  color: black;
+ 
+}
+label {
+  color: white;
+  text-align: left;
+}
+input {
+  color: black;
+  outline: none;
+  border: none;
+  border-bottom: 3px solid black;
+  width: 60vw;
+}
+
+#sub_btn {
+  background-color:white;
+  color: red;
+  width: 80px;
+  padding: 10px 5px;
+  outline: none;
+  border: none;
+  border-radius: 10px;
+}
+
+.machine {
+  background-color: black;
+  height: 100vh;
+  width: 100vw;
+  user-select: none;
+}
+
+.machine * {
+  position: absolute;
+}
+
+#heart {
+  bottom: 0;
+  left: 0;
+}
+
+#iron_man {
+  bottom: 0;
+  right: 0;
+}
+
+#time {
+  color: white;
+  top: 10px;
+  left: 10px;
+}
+
+.in_middle {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: black;
+  padding: 50px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  z-index: 10000;
+
+  width: 80vw;
+  height: 70vh;
+  overflow-y: scroll;
+}
+
+.in_middle::-webkit-scrollbar {
+  display: block;
+}
+
+.in_middle::-webkit-scrollbar-track {
+  border-radius: 10px;
+}
+
+.in_middle::-webkit-scrollbar-thumb {
+  background: white;
+  border-radius: 10px;
+}
+
+.icon {
+  height: 50px;
+  width: 50px;
+  object-fit: cover;
+  padding: 3px;
+  background-color: white;
+  border-radius: 50%;
+}
+
+.cont * {
+  position: static;
+}
+
+.cont {
+  top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.battery {
+  left: 50%;
+  width: 100px;
+  transform: translateX(-50%);
+}
+
+.clock {
+  width: 150px;
+  letter-spacing: 2px;
+}
+
+.internet {
+  top: 100px;
+  left: 5px;
+  width: 120px;
+}
+
+.in_middle * {
+  position: static;
+}
+
+.temp {
+  top: 10px;
+  right: 10px;
+  text-align: right;
+  font-size: smaller;
+}
+
+.temp * {
+  position: static;
+}
+
+.messages * {
+  position: static;
+}
+
+.messages {
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 400px;
+  overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  padding-bottom: 15px;
+  z-index: 1000;
+}
+
+.usermsg {
+  text-align: right;
+  width: 300px;
+  color: rgb(113, 113, 235);
+}
+
+.jmsg {
+  text-align: left;
+  margin-top: 5px;
+  width: 300px;
+  color: rgb(245, 61, 61);
+}
+
+.messages::-webkit-scrollbar {
+  display: none;
+}
+
+.commands {
+  display: none;
+  background-color:black;
+}
+
+.commands p {
+  color: white;
+}
+
+#start_jarvis_btn {
+  border: none;
+  outline: none;
+  position: fixed;
+  left: 80px;
+  transform: translateX(0);
+  top: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+#start_jarvis_btn p {
+  font-size: 30px;
+}
+
+#start_jarvis_btn img {
+  height: 300px;
+}
+
+#stop_jarvis_btn {
+  border: none;
+  outline: none;
+  position: fixed;
+  left: 300px;
+  transform: translateX(0);
+  top: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  display: none;
+}
+
+#stop_jarvis_btn p {
+  font-size: 30px;
+}
+
+#stop_jarvis_btn img {
+  height: 300px;
+  filter: blur(5px);
+}
+
+.small_jarvis {
+  position: absolute;
+  top: calc(100vh - 370px);
+  left: calc(100vw - 370px);
+}
+
+.small_jarvis button {
+  background-color: black;
+  height: 370px;
+  width: 370px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  outline: none;
+  border: none;
+}
+.small_jarvis button p {
+  font-size: 50px;
+}
+
+.new_jarvis_window {
+  display: none;
+}
+
+
+@media screen and (max-width: 1200px) {
+  html{
+    font-size:small;
+  }
+  .battery {
+    left: 40%;
+    width: 60px;
+    transform: translateX(-50%);
+  }
+  
+  .clock {
+    width: 90px;
+    letter-spacing: 1px;
+  }
+  
+  .internet {
+    top: 90px;
+    left: 3px;
+    width: 100px;
+  }
+ #h {
+width:0px;
+height:0px;
+  }
+  #start_jarvis_btn img{
+    width:150px;
+    height:150px;
+      }
+      #stop_jarvis_btn img{
+        width:150px;
+        height:150px;
+          }
+          #stop_jarvis_btn {
+            border: none;
+            left:90px;
+            top: 450px;
+         
+          }
+ #start_jarvis_btn > p{
+font-size:10px;
+  }
+  #stop_jarvis_btn > p{
+    font-size:10px;
+      }
+  #small_jarvis  p{
+    display:none;
+  }
+  .icon{
+    height: 20px;
+  width: 20px;
+ 
+  padding: 1px;
+  background-color: white;
+  border-radius: 50%;
+  }
+}
+@media screen and (max-width: 420px) {
+  html{
+    font-size:small;
+  }
+  .battery {
+    left: 40%;
+    width: 50px;
+    transform: translateX(-50%);
+  }
+  
+  .clock {
+    width: 60px;
+    letter-spacing: 1px;
+  }
+  
+  .internet {
+    top: 90px;
+    left: 3px;
+    width: 100px;
+  }
+ #h {
+width:0px;
+height:0px;
+  }
+  #start_jarvis_btn img{
+    width:150px;
+    height:150px;
+    
+      }
+      #stop_jarvis_btn img{
+        width:150px;
+        height:150px;
+          }
+          #stop_jarvis_btn {
+            border: none;
+            left:90px;
+            top: 450px;
+         
+          }
+ #start_jarvis_btn > p{
+font-size:10px;
+  }
+  #stop_jarvis_btn > p{
+    font-size:10px;
+      }
+  #small_jarvis  p{
+    display:none;
+  }
+  .icon{
+    height: 20px;
+  width: 20px;
+ 
+  padding: 1px;
+  background-color: white;
+  border-radius: 50%;
+  }
+  .new_jarvis_window {
+    display: none;
+  }
+}
+@media (max-width: 300px) {
+  .hide_on_small {
+    display: none;
+  }
+  .new_jarvis_window {
+    display: block;
+  }
+  #start_jarvis_btn {
+    display: none;
+  }
+  #stop_jarvis_btn {
+    border: none;
+    left:80px;
+    top: 400px;
+ 
+  }
+  
+  #stop_jarvis_btn img{
+    width:200px;
+    height:200px;
+      }
+}
+
+
+
+    </style>
+   
+  </head>
+  <body>
+   
+    <audio src="./Jarvis.mp3" id="j_intro"></audio>
+    <audio src="./power up.mp3" id="turn_on"></audio>
+
+    <div class="machine hide_on_small">
+      <div class="clock cont">
+       
+        <img src="./clock1.png" class="icon" />
+        <p id="time"></p>
+      </div>
+      <div class="internet cont">
+       
+        <img src="./internet1.png" class="icon" />
+        <p id="internet"></p>
+      
+      </div>
+      <div class="abouts">
+        <a href="howtousejarvis.html" id="about-jarvis-link">About Jarvis</a>
+      </div>
+      <div class="battery cont">
+        <img src="./battery1.png" class="icon" />
+        <p id="battery"></p>
+      </div>
+      <div class="temp">
+        <p id="location"></p>
+        <p id="country"></p>
+        <p id="weatherT"></p>
+        <p id="weatherD"></p>
+        <img src="" id="weatherIcon" />
+        <p id="oTemp"></p>
+        <p id="feelLikeTemp"></p>
+        <p id="minT"></p>
+        <p id="maxT"></p>
+      </div>
+      
+     
+    </div>
+
+    <button id="start_jarvis_btn" class="hide_on_small">
+      <img id="h2" src="https://i.gifer.com/origin/43/434771e3bf841e79abb2d4da70d6b1e2.gif" alt="start jarvis" />
+      <p>Start Recognition</p>
+    </button>
+
+    <button id="stop_jarvis_btn" class="hide_on_small">
+      <img id="h1" src="https://i.gifer.com/origin/43/434771e3bf841e79abb2d4da70d6b1e2.gif" alt="start jarvis" />
+      <p>Stop Recognition</p>
+    </button>
+
+
+    <div class="small_jarvis hide_on_small">
+      <button id="small_jarvis"><img id="h" 
+        src="https://phoneky.co.uk/thumbs/screensavers/down/movies/ironman_ntya8o7e.gif"  height="350"><p>Minimize Screen</p></button>
+    </div>
+
+    <div class="jarvis_setup in_middle hide_on_small">
+      <label for="">Name</label>
+      <input type="text" />
+      <br />
+    
+      <label for="">Your Location</label>
+      <input type="text" />
+      <br />
+      <label for="">GitHub Profile</label>
+      <input type="text" />
+      <br />
+     
+      <label for="">LeetCode Profile</label>
+      <input type="text" />
+      <br />
+      <label for="">CodeChef Profile</label>
+      <input type="text" />
+      <br />
+      
+     
+      
+      <button id="sub_btn">Submit</button>
+    </div>
+
+  
+
+    <div class="commands in_middle hide_on_small"></div>
+
+    <div class="new_jarvis_window">
+      <img src="https://i.makeagif.com/media/4-13-2014/ny4ZkV.gif" height="230" id="jarvis_start"/>
+    </div>
+
+    <script>
+      
+alert("Welcome Sir! For the best experience and to fully enjoy all my features and functionalities, I recommend using a laptop or PC and make sure to give microphone access and unblock pop-ups. ")  
+
+const turn_on = document.querySelector("#turn_on");
+const jarvis_intro = document.querySelector("#j_intro");
+const time = document.querySelector("#time");
+const machine = document.querySelector(".machine");
+let stopingR = false;
+let jarviscomd = [];
+jarviscomd.push("These are commands of jarvis which you can use")
+
+jarviscomd.push("Jarvis-Activate Jarvis", "Hii Jarvis-Activate Jarvis", "Hello Jarvis-Activate Jarvis", "Hey Jarvis-Activate Jarvis");
+jarviscomd.push("show me commands - Show commands to use Jarvis");
+jarviscomd.push("close this - close tabs");
+jarviscomd.push(
+  "change my information - Change informations entered by you in start like github profile,insta profile etc details "
+);jarviscomd.push(
+  "open chatroom- Opne chatroom"
+);
+jarviscomd.push("whats the weather or temperature -Show the weather details");
+jarviscomd.push("show the full weather report - show the forecasting of weather");
+jarviscomd.push("are you there - to check jarvis presence");
+jarviscomd.push("shut down - stop voice recognition");
+jarviscomd.push("open google");
+jarviscomd.push("open news");
+jarviscomd.push("open quiz");
+jarviscomd.push("open jokes");
+jarviscomd.push('search for "your keywords" - to search on google ');
+jarviscomd.push("open whatsapp");
+jarviscomd.push("open youtube");
+jarviscomd.push('play "your keywords" - to search on youtube ');
+jarviscomd.push("close this youtube tab - to close opened youtube tab");
+jarviscomd.push("open firebase");
+jarviscomd.push("open netlify");
+jarviscomd.push("open twitter");
+jarviscomd.push("open codechef");
+jarviscomd.push("open my codechef profile");
+jarviscomd.push("open my leetcode profile");
+jarviscomd.push("open leetcode");
+jarviscomd.push("open instagram");
+jarviscomd.push("open github");
+jarviscomd.push("open my github profile");
+jarviscomd.push("open facebook");
+
+let ytbWindow;
+
+console.log("Welcome Sir,If you are going to use Jarvis for the very first time then please enter all the fields displaying on screen.If you don't want to fill any field Write 'NA' there")
+console.log("Welcome Sir! For the best experience and to fully enjoy all my features and functionalities, I recommend using a laptop or PC and make sure to give microphone access and unblock pop-ups.")
+console.log('To check for the jarvis commands speak -"show me commands"');
+console.log("Visit About Jarvis Page to know about the jarvis and commands to use it.")
+
+
+let date = new Date();
+let hrs = date.getHours();
+let mins = date.getMinutes();
+let secs = date.getSeconds();
+
+
+let weatherStatement = "";
+let charge,chargeStatus, connectivity, currentTime
+chargeStatus = "unplugged"
+
+window.onload = () => {
+ 
+  turn_on.addEventListener("ended", () => {
+    setTimeout(() => {
+     
+      readOut("Ready to go sir");
+      if (localStorage.getItem("jarvis_setup") === null) {
+        readOut(
+          "Sir pLz fill out all the details so that you can use me properly. You can write NA if you not want to fill a field"
+        );
+      }
+    }, 200);
+  });
+
+  jarviscomd.forEach((e) => {
+    document.querySelector(".commands").innerHTML += `<p>#${e}</p><br />`;
+  });
+
+  let batteryPromise = navigator.getBattery();
+  batteryPromise.then(batteryCallback);
+
+ 
+
+    if(navigator.onLine){
+      document.querySelector("#internet").textContent = "online"
+      connectivity = "online"
+    } else {
+      document.querySelector("#internet").textContent = "offline"
+      connectivity = "offline"
+    }
+
+  setInterval(() => {
+    if(navigator.onLine){
+      document.querySelector("#internet").textContent = "online"
+      connectivity = "online"
+    } else {
+      document.querySelector("#internet").textContent = "offline"
+      connectivity = "offline"
+    }
+  }, 60000);
+
+  function batteryCallback(batteryObject) {
+    printBatteryStatus(batteryObject);
+    setInterval(() => {
+      printBatteryStatus(batteryObject);
+    }, 5000);
+  }
+  function printBatteryStatus(batteryObject) {
+    document.querySelector("#battery").textContent = `${
+      (batteryObject.level * 100).toFixed(2)
+    }%`;
+    charge = batteryObject.level * 100
+    if (batteryObject.charging === true) {
+      document.querySelector(".battery").style.width = "200px";
+      document.querySelector("#battery").textContent = `${
+        (batteryObject.level * 100).toFixed(2)
+      }% Charging`;
+      chargeStatus = "plugged in"
+    }
+  }
+
+ 
+};
+
+function formatAMPM(date) {
+  var hours = date.getHours();
+  var minutes = date.getMinutes();
+  var ampm = hours >= 12 ? 'pm' : 'am';
+  hours = hours % 12;
+  hours = hours ? hours : 12; 
+  minutes = minutes < 10 ? '0'+minutes : minutes;
+  var strTime = hours + ':' + minutes + ' ' + ampm;
+  currentTime = strTime
+  time.textContent = strTime
+}
+
+formatAMPM(date)
+setInterval(() => {
+  formatAMPM(date)
+}, 60000);
+
+
+
+function autoJarvis() {
+  setTimeout(() => {
+    recognition.start();
+  }, 1000);
+}
+
+
+document.querySelector("#start_jarvis_btn").addEventListener("click", () => {
+  recognition.start();
+})
+
+
+document.querySelector("#stop_jarvis_btn").addEventListener("click", () => {
+  stopingR = true;
+  recognition.stop();
+})
+
+
+function weather(location) {
+  const weatherCont = document.querySelector(".temp").querySelectorAll("*");
+
+  let url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=48ddfe8c9cf29f95b7d0e54d6e171008`;
+  const xhr = new XMLHttpRequest();
+  xhr.open("GET", url, true);
+  xhr.onload = function () {
+    if (this.status === 200) {
+      let data = JSON.parse(this.responseText);
+      weatherCont[0].textContent = `Location : ${data.name}`;
+      weatherCont[1].textContent = `Country : ${data.sys.country}`;
+      weatherCont[2].textContent = `Weather  : ${data.weather[0].main}`;
+      weatherCont[3].textContent = `Description : ${data.weather[0].description}`;
+      weatherCont[4].src = `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
+      weatherCont[5].textContent = `Temperature : ${ktc(
+        data.main.temp
+      )}`;
+      weatherCont[6].textContent = `Feels Like ${ktc(data.main.feels_like)}`;
+      weatherCont[7].textContent = `Min temperature ${ktc(data.main.temp_min)}`;
+      weatherCont[8].textContent = `Max temperature ${ktc(data.main.temp_max)}`;
+      weatherStatement = `sir the weather in ${data.name} is ${
+        data.weather[0].description
+      } And The Temperature Feels Like ${ktc(data.main.feels_like)}`;
+    } else {
+      weatherCont[0].textContent = "Weather Info Not Found";
+    }
+  };
+
+  xhr.send();
+}
+
+function ktc(k) {
+  k = k - 273.15;
+  return k.toFixed(2);
+}
+
+if (localStorage.getItem("jarvis_setup") !== null) {
+  weather(JSON.parse(localStorage.getItem("jarvis_setup")).location);
+}
+
+
+const setup = document.querySelector(".jarvis_setup");
+setup.style.display = "none";
+if (localStorage.getItem("jarvis_setup") === null) {
+  setup.style.display = "flex";
+  setup.querySelector("button").addEventListener("click", userInfo);
+}
+
+function userInfo() {
+  let setupInfo = {
+    name: setup.querySelectorAll("input")[0].value,
+   
+    location: setup.querySelectorAll("input")[1].value,
+    github: setup.querySelectorAll("input")[2].value,
+    leetcode: setup.querySelectorAll("input")[3].value,
+    codechef: setup.querySelectorAll("input")[4].value,
+    
+  };
+
+  let testArr = [];
+
+  setup.querySelectorAll("input").forEach((e) => {
+    testArr.push(e.value);
+  });
+
+  if (testArr.includes("")) {
+    readOut("Sir pLz fill out all the details so that you can use me properly. You can write NA if you do not want to fill a field");
+  } else {
+    localStorage.clear();
+    localStorage.setItem("jarvis_setup", JSON.stringify(setupInfo));
+    setup.style.display = "none";
+    weather(JSON.parse(localStorage.getItem("jarvis_setup")).location);
+ 
+ readOut("Welcome! Please visit the 'About Jarvis' page to learn how to use voice assistant.")
+  }
+}
+
+let speech_lang = "hi-IN" 
+if(localStorage.getItem("lang") === null){
+  localStorage.setItem("lang", "en-US")
+}
+
+
+const SpeechRecognition =
+  window.SpeechRecognition || window.webkitSpeechRecognition;
+
+const recognition = new SpeechRecognition();
+recognition.continuous = true;
+recognition.lang = localStorage.getItem("lang")
+
+var synth = window.speechSynthesis;
+
+
+recognition.onstart = function () {
+  console.log("voice recognition activated");
+  document.querySelector("#stop_jarvis_btn").style.display = "flex"
+};
+
+readOut("Welcome Sir! For the best experience and to fully enjoy all my features and functionalities, I recommend using a laptop or PC and make sure to give microphone access and unblock pop-ups. ") 
+let windowsB = []
+
+recognition.onresult = function (event) {
+  let current = event.resultIndex;
+  let transcript = event.results[current][0].transcript;
+  transcript = transcript.toLowerCase();
+  let userData = localStorage.getItem("jarvis_setup");
+  console.log(transcript);
+
+
+  if(localStorage.getItem("lang") === "en-US"){
+    if (transcript.includes("hi jarvis")) {
+      readOut("hello sir");
+    }
+// Function to handle setting an alarm
+
+
+ 
+  
+    if (transcript.includes("what's the current charge")) {
+      readOut(`the current charge is ${charge}`);
+    }
+    if (transcript.includes("what's the charging status")) {
+      readOut(`the current charging status is ${chargeStatus}`);
+    }
+    if (transcript.includes("current time")) {
+      readOut(currentTime);
+    }
+    if (transcript.includes("connection status")) {
+      readOut(`you are ${connectivity} sir`);
+    }
+
+    if (transcript.includes("h")) {
+      readOut("sir here's the list of commands i can follow");
+      if(window.innerWidth <= 400 ){
+        window.resizeTo(screen.width,screen.height)
+      }
+      document.querySelector(".commands").style.display = "block";
+    }
+   
+    if (transcript.includes("Tell about yourself")) {
+      readOut(
+        "sir, i am a jarvis, a voice asistant made for browsers using javascript."
+      );
+    }
+  
+  
+    if (transcript.includes("close this")) {
+      readOut("closing the tab sir");
+      document.querySelector(".commands").style.display = "none";
+      if(window.innerWidth >= 401 ){
+        window.resizeTo(250,250)
+      }
+      setup.style.display = "none";
+    }
+  
+    if (transcript.includes("change my information")) {
+      readOut("Opening the information tab sir");
+      localStorage.clear();
+      
+      if(window.innerWidth <= 400 ){
+        window.resizeTo(screen.width,screen.height)
+      }
+      setup.style.display = "flex";
+      setup.querySelector("button").addEventListener("click", userInfo);
+    }
+  
+    
+
+    if (
+      transcript.includes("what's the temperature")
+    ) {
+      readOut(weatherStatement);
+    }
+  
+    if (transcript.includes("full weather report")) {
+      readOut("opening the weather report sir");
+      let a = window.open(
+        `https://www.google.com/search?q=weather+in+${
+          JSON.parse(localStorage.getItem("jarvis_setup")).location
+        }`
+      );
+      windowsB.push(a)
+    }
+  
+    if (transcript.includes("are you there")) {
+      readOut("yes sir");
+    }
+
+    if (transcript.includes("shut down")) {
+      readOut("Ok sir i will take a nap");
+      stopingR = true;
+      recognition.stop();
+    }
+  
+   
+    if (transcript.includes("open whatsapp")) {
+      readOut("opening whatsapp");
+      let a = window.open("https://web.whatsapp.com/");
+      windowsB.push(a)
+    }
+    if (transcript.includes("open chat room")) {
+      readOut("opening chatwebapp");
+      let a = window.location.href="discussion.html";
+      windowsB.push(a)
+    }
+    if (transcript.includes("open news")) {
+      readOut("opening chatwebapp");
+      let a = window.location.href="news.html";
+      windowsB.push(a)
+    }
+    
+    if (transcript.includes("open chatroom")) {
+      readOut("opening chatwebapp");
+      let a = window.location.href="discussion.html";
+      windowsB.push(a)
+    }
+    if (transcript.includes("open jokes")) {
+      readOut("opening chatwebapp");
+      let a = window.location.href="jokes.html";
+      windowsB.push(a)
+    }
+    if (transcript.includes("open quiz")) {
+      readOut("opening chatwebapp");
+      let a = window.location.href="quiz.html";
+      windowsB.push(a)
+    }
+
+    if (transcript.includes("open netlify")) {
+      readOut("opening netlify");
+      let a = window.open("https://app.netlify.com/");
+      windowsB.push(a)
+    }
+
+    if (transcript.includes("open spotify")) {
+      readOut("opening spotify");
+      let a = window.open("https://open.spotify.com/");
+      windowsB.push(a)
+    }
+  
+  
+  
+    if (transcript.includes("open firebase") ) {
+      readOut("opening firebase console");
+      let a = window.open("https://firebase.google.com/");
+      windowsB.push(a)
+    }
+  
+    if (transcript.includes("open facebook") ) {
+      readOut("opening facebook");
+      let a = window.open("https://www.facebook.com/");
+      windowsB.push(a)
+    }
+  
+   
+  
+    if (transcript.includes("open canva") || transcript.includes("open camera")) {
+      readOut("opening canva");
+      window.open("https://www.google.com/");
+    }
+  
+
+  
+    if (transcript.includes("what's my name")) {
+      readOut(`Sir, I know that you are ${JSON.parse(userData).name}`);
+    }
+ 
+   
+  
+    if (transcript.includes("open google")) {
+      readOut("opening google");
+      let a = window.open("https://www.google.com/");
+      windowsB.push(a)
+    }
+  
+    if (transcript.includes("search for")) {
+      readOut("here's your result");
+      let input = transcript.split("");
+      input.splice(0, 11);
+      input.pop();
+      input = input.join("").split(" ").join("+");
+      let a = window.open(`https://www.google.com/search?q=${input}`);
+      windowsB.push(a)
+    }
+  
+  
+    if (transcript.includes("open youtube")) {
+      readOut("opening youtube sir");
+      let a = window.open("https://www.youtube.com/");
+      windowsB.push(a)
+    }
+  
+    if (transcript.includes("play")) {
+      let playStr = transcript.split("");
+      playStr.splice(0, 5);
+      let videoName = playStr.join("");
+      playStr = playStr.join("").split(" ").join("+");
+      readOut(`searching youtube for ${videoName}`);
+      let a = window.open(`https://www.youtube.com/search?q=${playStr}`
+      );
+      windowsB.push(a)
+    }
+  
+  
+    if (transcript.includes("open instagram")) {
+      readOut("opening instagram sir");
+      let a =window.open("https://www.instagram.com");
+      windowsB.push(a)
+    }
+    if (transcript.includes("open my profile")) {
+      if (JSON.parse(userData).leetcode) {
+        readOut("opening your leetcode profile");
+        let a =window.open(
+          `https://leetcode.com/${JSON.parse(userData).leetcode}/`
+        );
+        windowsB.push(a)
+      } else {
+        readOut("sir i didn't found your leetcode profile");
+      }
+    }
+
+    if (transcript.includes("open my codechef profile")) {
+      readOut("opening your codechef profile");
+      let a=window.open(`https://codechef.com/${JSON.parse(userData).codechef}`);
+      windowsB.push(a)
+    }
+    if (transcript.includes("open twitter")) {
+      readOut("opening twitter sir");
+      let a = window.open(`https://twitter.com/`);
+      windowsB.push(a)
+    }
+  
+    
+    if (transcript.includes("open my github profile")) {
+      readOut("opening your github profile");
+      let a = window.open(`https://github.com/${JSON.parse(userData).github}`);
+      windowsB.push(a)
+    }
+    if (transcript.includes("open github")) {
+      readOut("opening github");
+      let a = window.open("https://github.com/");
+      windowsB.push(a)
+    }
+ 
+    if (transcript.includes("open calendar")) {
+      readOut("opening calendar");
+      let a = window.open("https://calendar.google.com/");
+      windowsB.push(a)
+    }
+
+    if (transcript.includes("close all tabs")) {
+      readOut("closing all tabs sir")
+      windowsB.forEach((e) => {
+        e.close()
+      })
+  
+    }
+ 
+    if (transcript.includes("top headlines")) {
+      readOut("These are today's top headlines sir")
+      getNews()
+  
+    }
+  
+    if (transcript.includes("news regarding")) {
+     
+      let input = transcript
+      let a = input.indexOf("regarding")
+      input = input.split("")
+      input.splice(0,a+9)
+      input.shift()
+      input.pop()
+  
+      readOut(`here's some headlines on ${input.join("")}`)
+      getCategoryNews(input.join(""))
+  
+    }
+  }    
+
+  
+  
+
+
+}
+
+
+
+
+recognition.onend = function () {
+  if (stopingR === false) {
+    setTimeout(() => {
+      recognition.start();
+    }, 500);
+  } else if (stopingR === true) {
+    recognition.stop();
+    document.querySelector("#stop_jarvis_btn").style.display = "none"
+  }
+};
+
+
+
+function readOut(message) {
+  const speech = new SpeechSynthesisUtterance();
+  speech.text = message;
+  speech.volume = 1;
+  window.speechSynthesis.speak(speech);
+  console.log("Speaking out");
+  
+}
+
+
+
+
+
+
+
+const smallJarvis = document.querySelector("#small_jarvis")
+
+
+
+smallJarvis.addEventListener("click", () => {
+  window.open(`${window.location.href}`,"newWindow","menubar=true,location=true,resizable=false,scrollbars=false,width=200,height=200,top=0,left=0")
+  window.close()
+})
+
+
+
+document.querySelector("#jarvis_start").addEventListener("click", () => {
+  recognition.start()
+})
+
+
+
+const lang = navigator.language;
+
+let datex = new Date();
+let dayNumber 	= date.getDate();
+let monthx 		= date.getMonth();
+
+let dayName 	= date.toLocaleString(lang, {weekday: 'long'});
+let monthName 	= date.toLocaleString(lang, {month: 'long'});
+let year 		= date.getFullYear();
+
+document.querySelector("#month").innerHTML = monthName
+document.querySelector("#day").innerHTML = dayName
+document.querySelector("#date").innerHTML = dayNumber
+document.querySelector("#year").innerHTML = year
+
+document.querySelector(".calendar").addEventListener("click", () => {
+  window.open("https://calendar.google.com/")
+})
+
+
+
+async function getNews(){
+  var url = "https://newsapi.org/v2/top-headlines?country=in&apiKey=b0712dc2e5814a1bb531e6f096b3d7d3"
+  var req = new Request(url)
+  await fetch(req).then((response) => response.json())
+  .then((data) => {
+    console.log(data);
+    let arrNews = data.articles
+    arrNews.length = 10
+    let a = []
+    arrNews.forEach((e,index) => {
+      a.push(index+1)
+      a.push(".........")
+      a.push(e.title)
+      a.push(".........")
+
+    });
+    readOut(a)
+  })
+}
+
+
+
+let yyyy,mm,dd
+
+dd = date.getDate()
+mm = date.getMonth()
+yyyy = date.getFullYear()
+
+async function getCategoryNews(category){
+  var url =
+    "https://newsapi.org/v2/everything?" +
+    `q=${category}&` +
+    `from=${yyyy}-${mm}-${dd}&` +
+    "sortBy=popularity&" +
+    "apiKey=b0712dc2e5814a1bb531e6f096b3d7d3";
+
+    
+
+    var req = new Request(url)
+
+  await fetch(req).then((response) => response.json())
+  .then((data) => {
+    console.log(data);
+    let arrNews = data.articles
+    arrNews.length = 10
+    let a = []
+    arrNews.forEach((e,index) => {
+      a.push(index+1)
+      a.push(".........")
+      a.push(e.title)
+      a.push(".........")
+    });
+    readOut(a)
+  })
+}
+
+    </script>
+  </body>
+</html>
