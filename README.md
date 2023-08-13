@@ -1,0 +1,3 @@
+- Developed voice assistant 'Jarvis' using HTML, CSS, and JavaScript.
+- Integrated Web Speech API to enable speech-to-text and text-to-speech conversion.
+- Implemented voice-controlled features, enabling task execution through natural voice commands.
